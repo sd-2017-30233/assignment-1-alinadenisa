@@ -30,6 +30,7 @@ public class EmployeeController {
         this.employeeView.addUpdateAccountListener(new UpdateAccountListener());
         this.employeeView.addViewAccountListener(new ViewAccountListener());
         this.employeeView.addDeleteAccountListener(new DeleteAccountListener());
+        this.employeeView.addTransferMoneyListener(new TransferMoneyListener());
     }
 
     class CreateClientListener implements ActionListener {
@@ -161,6 +162,25 @@ public class EmployeeController {
         int clientId= client.getId();
         employeeLogic.deleteAccount(clientId,type);
             JOptionPane.showMessageDialog(null, "Account successfully deleted",
+                    "Succes", JOptionPane.INFORMATION_MESSAGE);
+
+            employeeView.clear();
+        }
+    }
+
+    class TransferMoneyListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            String name = employeeView.getNameClientField().getText();
+            String name1 = employeeView.getNumeTransferField().getText();
+            String type = employeeView.getTypeAccountField().getText();
+            String suma = employeeView.getAmountAccountField().getText();
+            int amount = Integer.parseInt(suma);
+            Client client = employeeLogic.getClientByName(name);
+            int id = client.getId();
+            Client client1 = employeeLogic.getClientByName(name1);
+            int id1 = client1.getId();
+            employeeLogic.transferMoney(id, type, id1,amount);
+            JOptionPane.showMessageDialog(null, "Amount of money successfully transfered",
                     "Succes", JOptionPane.INFORMATION_MESSAGE);
 
             employeeView.clear();

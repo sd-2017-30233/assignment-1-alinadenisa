@@ -18,6 +18,7 @@ public class EmployeeView extends JFrame {
     private JButton updateAccountButton;
     private JButton viewAccountButton;
     private JButton deleteAccountButton;
+    private JButton transferMoneyButton;
 
     private JTextField nameClientField;
     private JTextField cardNoClientField;
@@ -27,7 +28,7 @@ public class EmployeeView extends JFrame {
     private JTextField typeAccountField;
     private JTextField amountAccountField;
     private JTextField creationDateAccountField;
-
+    private JTextField numeTransferField;
     private JTextArea textArea;
 
     public EmployeeView() {
@@ -55,6 +56,7 @@ public class EmployeeView extends JFrame {
         JLabel typeAccountLabel = new JLabel("Type");
         JLabel amountAccountLabel = new JLabel("Amount");
         JLabel creationDateAccountLabel = new JLabel("CreationDate");
+        JLabel numeTransferLabel = new JLabel("Nume transfer");
 
         panel.add(clientLabel);
         panel.add(nameClientLabel);
@@ -66,6 +68,7 @@ public class EmployeeView extends JFrame {
         panel.add(typeAccountLabel);
         panel.add(amountAccountLabel);
         panel.add(creationDateAccountLabel);
+        panel.add(numeTransferLabel);
 
         clientLabel.setBounds(50, 50, 150, 30);
         nameClientLabel.setBounds(50, 100, 150, 30);
@@ -77,7 +80,7 @@ public class EmployeeView extends JFrame {
         typeAccountLabel.setBounds(400, 100, 150, 30);
         amountAccountLabel.setBounds(400, 150, 150, 30);
         creationDateAccountLabel.setBounds(400, 200, 150, 30);
-
+        numeTransferLabel.setBounds(400,250,150,30);
         createClientButton = new JButton("Create Client");
         updateClientButton = new JButton("Update Client");
         viewClientButton = new JButton("View Client ");
@@ -86,6 +89,7 @@ public class EmployeeView extends JFrame {
         updateAccountButton = new JButton("Update Account");
         viewAccountButton = new JButton("View Account ");
         deleteAccountButton = new JButton("Delete Account");
+        transferMoneyButton = new JButton("Transfer money");
 
         createClientButton.setBounds(220, 100, 150, 30);
         updateClientButton.setBounds(220, 150, 150, 30);
@@ -95,6 +99,7 @@ public class EmployeeView extends JFrame {
         updateAccountButton.setBounds(600, 150, 150, 30);
         viewAccountButton.setBounds(600, 200, 150, 30);
         deleteAccountButton.setBounds(600, 250, 150, 30);
+        transferMoneyButton.setBounds(600,300,150,30);
 
         panel.add(createClientButton);
         panel.add(updateClientButton);
@@ -103,6 +108,7 @@ public class EmployeeView extends JFrame {
         panel.add(updateAccountButton);
         panel.add(viewAccountButton);
         panel.add(deleteAccountButton);
+        panel.add(transferMoneyButton);
 
         nameClientField = new JTextField();
         cardNoClientField = new JTextField();
@@ -112,6 +118,7 @@ public class EmployeeView extends JFrame {
         typeAccountField = new JTextField();
         amountAccountField = new JTextField();
         creationDateAccountField = new JTextField();
+        numeTransferField = new JTextField();
 
         nameClientField.setBounds(120, 100, 80, 30);
         cardNoClientField.setBounds(120, 150, 80, 30);
@@ -121,6 +128,7 @@ public class EmployeeView extends JFrame {
         typeAccountField.setBounds(500, 100, 80, 30);
         amountAccountField.setBounds(500, 150, 80, 30);
         creationDateAccountField.setBounds(500, 200, 80, 30);
+        numeTransferField.setBounds(500,250,80,30);
 
         panel.add(nameClientField);
         panel.add(cardNoClientField);
@@ -130,6 +138,7 @@ public class EmployeeView extends JFrame {
         panel.add(typeAccountField);
         panel.add(amountAccountField);
         panel.add(creationDateAccountField);
+        panel.add(numeTransferField);
 
         textArea = new JTextArea(5,20);
         JScrollPane scrollPane = new JScrollPane(textArea);
@@ -149,6 +158,7 @@ public class EmployeeView extends JFrame {
         typeAccountField.setText("");
         amountAccountField.setText("");
         creationDateAccountField.setText("");
+        numeTransferField.setText("");
     }
 
     public JFrame getFrame() {
@@ -185,6 +195,8 @@ public class EmployeeView extends JFrame {
     public void addDeleteAccountListener(ActionListener a) {
         deleteAccountButton.addActionListener(a);
     }
+
+    public void addTransferMoneyListener(ActionListener a){transferMoneyButton.addActionListener(a);}
 
     public JPanel getPanel() {
         return panel;
@@ -308,5 +320,21 @@ public class EmployeeView extends JFrame {
 
     public void setCreationDateAccountField(JTextField creationDateAccountField) {
         this.creationDateAccountField = creationDateAccountField;
+    }
+
+    public JButton getTransferMoneyButton() {
+        return transferMoneyButton;
+    }
+
+    public void setTransferMoneyButton(JButton transferMoneyButton) {
+        this.transferMoneyButton = transferMoneyButton;
+    }
+
+    public JTextField getNumeTransferField() {
+        return numeTransferField;
+    }
+
+    public void setNumeTransferField(JTextField numeTransferField) {
+        this.numeTransferField = numeTransferField;
     }
 }

@@ -44,5 +44,8 @@ public class EmployeeLogic {
         accountDao.deleteAccount(clientId,type);
     }
 
+    public void transferMoney(int clientId, String type, int ClientId1, int amount) {accountDao.transferMoney(clientId,type,ClientId1, amount); }
 
 }
+
+

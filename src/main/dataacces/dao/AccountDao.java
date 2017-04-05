@@ -81,4 +81,49 @@ public class AccountDao {
         return account;
     }
 
-}
+    public void transferMoney(int clientId, String type, int clientId1, int amount)  {
+        Account account = new Account();
+        int suma = 0,suma1 = 0;
+
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("select * from account where idClient=? and type=?");
+
+                preparedStatement.setInt(1, clientId);
+                preparedStatement.setString(2, type);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    suma = rs.getInt("amount");
+                }
+            PreparedStatement preparedStatement1 = connection.
+                    prepareStatement("select * from account where idClient=?");
+
+                preparedStatement1.setInt(1, clientId1);
+                ResultSet rs1 = preparedStatement1.executeQuery();
+                while (rs1.next()) {
+                    suma1 = rs1.getInt("amount");
+                }
+
+            int amount1 = suma - amount;
+
+            PreparedStatement preparedStatement2 = connection.prepareStatement("update account set amount=? where idClient=?");
+            preparedStatement2.setInt(1,amount1);
+            preparedStatement2.setInt(2,clientId);
+            preparedStatement2.executeUpdate();
+
+            int amount2 = suma1 + amount;
+            PreparedStatement preparedStatement3 = connection.prepareStatement("update account set amount=? where idClient=?");
+            preparedStatement3.setInt(1,amount2);
+            preparedStatement3.setInt(2,clientId1);
+            preparedStatement3.executeUpdate();
+
+        }
+        catch(SQLException se){
+            se.printStackTrace();
+        }
+
+            }
+
+            }
+
+

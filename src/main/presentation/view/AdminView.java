@@ -85,9 +85,7 @@ public class AdminView extends JFrame {
         panel.add(nameUserField);
         panel.add(roleUserField);
 
-        JSeparator separtor = new JSeparator(JSeparator.VERTICAL);
-        separtor.setBounds(440, 50, 10, 450);
-        panel.add(separtor);
+
     }
 
     public void clear(){
